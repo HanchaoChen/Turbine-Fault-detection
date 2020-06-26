@@ -1,0 +1,104 @@
+\documentclass[english,a4paper,11pt]{article}
+\usepackage[top = 2cm, bottom = 2cm,left = 2cm, right = 2cm]{geometry}
+
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage[affil-it]{authblk}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[titles]{tocloft}
+\renewcommand{\cftbeforesecskip}{2pt}
+\setcounter{tocdepth}{2}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+
+\usepackage{hyperref}
+\makeatletter
+\def\UrlAlphabet{%
+      \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+      \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+      \do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+      \do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+      \do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+      \do\Y\do\Z}
+\def\UrlDigits{\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0}
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\g@addto@macro{\UrlBreaks}{\UrlAlphabet}
+\g@addto@macro{\UrlBreaks}{\UrlDigits}
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand\headrulewidth{0pt}
+\renewcommand\footrulewidth{0pt}
+\fancyhead[L]{GitHub repository: https://github.com/acse-2019/irp-acse-hc1119}
+
+\begin{document}
+
+\section{Introduction}
+The wind is a clean, free, and readily available renewable energy source. And wind turbines allow us to harness the power of the wind and turn it into electricity. With the growing demand for environment protection, wind power generation is playing an increasingly important role in recent decades. For example, wind energy had a total net installed capacity of 169 GW in Europe in 2017. And this number became 205GW in 2019. Wind energy has become one of the fastest-growing energy sources in the world.
+
+Wind farm is a cluster of many individual wind turbines and can be classified into onshore wind farm and off shore wind farm. Offshore wind energy, which is much more recent and emerged mainly due to less impact on landscape and to take advantage of the steadier and stronger offshore winds, has been price-competitive with conventional power sources in Europe since 2017. And the European Commission expects that offshore wind energy will be of increasing importance in the future[1].
+
+With technology development, there is a tendency that companies increase the rated capacity of wind turbines as well as the distance between offshore wind farm and shore, to maximise the extracted power. However, this significantly increases the complexity of the project. And the demand for technological improvement not only with respect to the wind turbines themselves but also with their transportation, installation, grid integration and Operation and Maintenance (O\&M) is ever increasing[2]. Compared to installation whose cost is fixed at the beginning and can be hardly controlled by wind farm owners, O\&M is more flexible and has potential to be optimized during the whole life cycle. O\&M accounts for 25-30\% of the lifetime cost of offshore wind farms including component failures and replacement[2]. It is largely because of the remoteness of the farms, the non-optimal maintenance strategy and the harsh ocean environment they are exposed to. In order to stay competitive with respect to other rapid growing technologies, companies need to maximize the economic effectiveness of these offshore wind farms. Therefore, reducing the O\&M costs becomes the main goal in the offshore wind industry. Now more and more advanced maintenance strategies are being researched and implemented by wind industry to minimize O\&M costs.
+
+Basically, there are two types of maintenance strategies: reactive maintenance and preventive maintenance. Reactive maintenance is repairs that carried out after a component failure has occurred. While preventive maintenance is regularly carried out or based on certain predefined criteria to lessen the likelihood of a failure. Although no initial cost and maintenance plan required for reactive maintenance, there are several disadvantages: more cost of unexpected downtime, shorter asset life expectancy and difficulty of time management. Since reactive maintenance is a short-sighted approach, relying only on reactive maintenance is not economic effective for the long term projects. For the wind but increasingly also other industries like, mineral processing, oil \& gas - reactive maintenance is no longer a solution. This is the rationale why the wind industry pays more attention to the search on preventive maintenance. Preventive maintenance can reduce the cost and repair time but has also indirect advantages - extended lifetime and the optimization of energy production.
+
+\section{Objectives}
+We wish to harness the Supervisory Control and Data Acquisition data (SCADA) collected from wind farms to perform predictive analytics. In more detail, we will harness data already recorded by the turbines, defining health status of the machine and using it to help make decisions on preventive maintenance. Particularly, the components whose health are to be determined include gearbox, generator, main bearing, yaw drive and pitch mechanism. It is also possible that more detailed health could be determined e.g. high-speed stage bearing health. Finally, we will get a suitable Machine learning model to predict the health status of wind turbines from 10-minute SCADA data. 
+
+Besides, there are several additional problems to be analysis if time permits. 
+
+\textbf{Remaining useful life}: Rather than predicting component failure, develop a machine learning based model can be trained and utilised to estimate remaining useful life.
+
+\textbf{General model}: Develop a general model which can be applied to wind turbines at different position or even different types of wind turbines. 
+
+\textbf{Additional data}: Use data not comes from SCADA system to train the model, like altitude and humidity.
+
+\section{Method}
+In this project, since the SCADA data is typical time series data, we will naturally choose time series analysis as our main method. To start with, simplest model like AR model will be developed at the beginning point. Then we will try to build VAR, TAR and LSTM model based on multivariate time series prediction method. At the end, we will assess the results of different models based on machine learning techniques and find the optimal solution to detect abnormal behaviour which could be caused by developing failures. 
+
+\section{Schedule}
+
+\begin{table}[h]
+\begin{tabular}{lll}
+                            & start date & end date \\
+Project plan                & 1-Jun      & 26-Jun   \\
+Algorithm  Development      & 26-Jun     & 10-Jul   \\
+Implementation\&Experiments & 10-Jul     & 14-Aug   \\
+Final Report                & 14-Aug     & 26-Aug  
+\end{tabular}
+\end{table}
+
+The list above shows our plan for this project where the duration of each task is estimated and can be adjusted based on actual progress of the project. 
+
+The whole project is structured as follows:
+
+\textbf{Section 1 - Project Plan}: We are required to do literature review and set a feasible plan for the project. During this period, we need to fully understand the background of wind energy O\&M and try to find potential research directions. Finally focus on one point and make a schedule for the project.
+
+\textbf{Section 2 - Algorithm Development}: We are required to learn how to develop time series models by ourselves and design several ANN models for fault prediction using the knowledge from ACSE-8.
+
+\textbf{Section 3 - Implementation and Experiments}: In this section we will focus on code. Do as many experiments as possible to find an optimal method for fault prediction.
+
+\textbf{Section 4 – Final Thesis}: Summarise the results and draw a conclusion of this project. We will mainly write the thesis during this period.
+
+\section{Bibliography}
+[1]\ Oliver, D. (2020) Machine Learning. [Lecture] Imperial College London, 11th May.
+
+[2]\ Sofia Walker, S. (2018) Condition-Based Maintenance of Offshore Wind Farms: The Use of SCADA Data in Normal Behaviour Modelling. Energy Futures Lab. 
+
+[3]\ Ya, S. Youjian, Z. Chenhao, N. Rong, N. Wei, S. \& Dan, P. (2019) Robust Anomaly Detection for Multivariate Time Series through Stochastic Recurrent Neural Network. In The 25th ACM SIGKDD Conference on Knowledge Discovery and Data Mining, August 4-8, 2019, Anchorage, AK, USA. ACM, New York, NY, USA, 10 pages. \url{https://doi.org/ 10.1145/3292500.3330672}
+
+[4]\ Gebhard kirchgassner. (2012)Introduction to modern time series analysis. 2nd edition. Springer. Available from: \url{http://www.wiwi.uni-frankfurt.de/de/abteilungen/ei/professoren/hassler/team/prof-dr-uwe-hassler/books.html}[Accessed 20th June 2020].
+
+\section{References}
+[1]\ After a decade of dithering, the US east coast went all in on offshore wind power this week". Retrieved 29 September 2018. Available from: \url{https://en.keyenergy.it/key-energy/info/news/key-energy-news/after-a-decade-of-dithering-the-us-east-coast-went-all-in-on-offshore-wind-power-this-week.n8604504.html}
+
+[2]\ Sofia Walker, S. (2018) Condition-Based Maintenance of Offshore Wind Farms: The Use of SCADA Data in Normal Behaviour Modelling. Energy Futures Lab. 
+
+\end{document}
