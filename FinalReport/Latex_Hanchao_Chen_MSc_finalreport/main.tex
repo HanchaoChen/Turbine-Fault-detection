@@ -1,0 +1,88 @@
+%\documentclass{article}
+%\usepackage[utf8]{inputenc}
+%\begin{document}
+%(Type your content here.)
+%\end{document}
+\documentclass[english,a4paper,11pt]{article}
+\usepackage[top = 2cm, bottom = 2cm,left = 2cm, right = 2cm]{geometry}
+\usepackage{parskip}
+% change how to differentiate new paragraphs:
+%\setlength\parindent{0pt} % sets indent to zero
+%\setlength{\parskip}{10pt} % changes vertical space between paragraphs
+
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{babel}
+\usepackage{url}
+\usepackage{fancyhdr} % page layout
+\usepackage{multirow}
+\usepackage[affil-it]{authblk}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[titles]{tocloft}
+\renewcommand{\cftbeforesecskip}{2pt}
+\setcounter{tocdepth}{2}
+
+\newcommand{\rr}{{\emph{r}}}
+\newcommand{\hh}{{\emph{h}}}
+\newcommand{\hr}{{\emph{hr}}}
+\newcommand{\pp}{{\emph{p}}}
+\newcommand\ppt[1]{\frac{\partial #1}{\partial t}}
+\renewcommand\vector\vec
+\newcommand\vu{\bm{u}} % velocity vector
+\newcommand\vk{\bm{k}} % upward normal
+\newcommand\vn{\bm{n}} % normal to the boundary
+\newcommand\tmu{\overline{\overline\mu}} % viscosity tensor
+
+
+% \title{Machine Learning in the wind energy industry: turbine fault prediction and maintenance scheduling}
+
+% \author[1]{\small Hanchao Chen\thanks{Corresponding author: m.d.piggott@imperial.ac.uk}}
+
+
+% \affil[1]{Department of Earth Science and Engineering, Imperial College London, SW7 2AZ, UK}
+\newcommand{\reporttitle}{Wind Turbine Fault Prediction and Maintenance Scheduling: The Use of Machine Learning Techniques}
+\newcommand{\reportauthor}{Hanchao Chen}
+\newcommand{\supervisor}{Matthew Piggott}
+\newcommand{\cosupervisor}{James Percival}
+
+\begin{document}
+
+% load title page
+\input{titlepage}
+
+%\maketitle
+
+
+
+\newpage
+\input{abstract.tex}
+\thispagestyle{empty}
+
+\newpage
+% if you want a table of contents, if not just delete - here we use a smaller font
+% {\small\tableofcontents}
+\tableofcontents 
+\thispagestyle{empty}
+
+
+\newpage
+\setcounter{page}{1}
+
+\input{introduction.tex}
+\input{methodology.tex}
+\input{conclusions.tex}
+\input{acknowledgements.tex}
+
+
+\bibliographystyle{abbrv}
+% delete the \small size command if you want to use normal font size
+{\small
+\bibliography{bibliography.bib}
+}
+\appendix
+\input{appendixA.tex}
+\input{appendixB.tex}
+\end{document}

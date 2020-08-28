@@ -1,0 +1,15 @@
+\section{Appendix: LSTM Networks}
+
+The key element of LSTM is the cell state $C_t$ which is the horizontal line running through the top of the diagram. Present information is recorded in cell state and sent to next step of LSTM. It's like a belt runs through the entire network and keeps the information all the way. And there are structures in LSTM called gates that have ability to remove or add information to the cell state. LSTM has three kinds of gates, named forget gate, input gate and output gate.
+
+Just as its name implies, forget gate decides what information will be thrown away from the cell state. And the operation is done by a simple sigmoid layer. Forget gate takes $h_{t-1}$ and $x_t$ as inputs, and outputs a number between 0 and 1 for each number in the cell state $C_{t-1}$. For example, 1 means "completely keep this" while 0 means "completely forget this".
+$$f_t = \sigma (W_f \cdot [h_{t-1}, x_t] + b_f)$$
+
+Input gate is a combination of a sigmoid layer and a tanh layer which decides what new information will be stored in the cell state. The sigmoid layer generate a value $i_t$ between 0 and 1 decides which values to be update. The tanh layer creates a vector of new candidate values $\widetilde{C}_t$. Then $\widetilde{C}_t$ is multiplied by $i_t$ to update the cell state.
+$$i_t = \sigma (W_i \cdot [h_{t-1}, x_t] + b_i)$$
+$$\widetilde{C}_t = tanh(W_C \cdot [h_{t-1}, x_t] + b_C)$$
+
+Finally, the output gate decides the output value $h_t$. The output is based on cell state which has been modified by forget gate and input gate. First, a sigmoid layer is added to select input value. Then, the cell state will go through a tanh layer and multiplied by the output of the sigmoid layer.
+
+$$o_t = \sigma (W_o \cdot [h_{t-1}, x_t] + b_o)$$
+$$h_t = o_t * tanh(C_t)$$

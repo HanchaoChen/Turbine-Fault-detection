@@ -1,0 +1,25 @@
+\section{Appendix: Optimization algorithm}
+
+Gradient descent is a first-order iterative algorithm to minimize the loss function. At the beginning, the weights ($\theta$) of the neurons are set randomly. Their values will be updated every epoch based on the gradient of the loss function $J(\boldsymbol\theta)=\frac{1}{m}\sum_{i=1}^{m}{L(\boldsymbol\theta,({x}^{i},{y}^{i}))}$:
+$$\boldsymbol\theta = \boldsymbol\theta - \eta \nabla \boldsymbol\theta J(\boldsymbol\theta;{x}^{i};{y}^{i})$$
+
+where $\eta$ is the learning rate. The loss function are function of difference between estimated and true values for an instance of data. The gradient descent function calculates the gradient for each of the samples and averages the values\cite{bottou2012stochastic}. It is one of the simplest algorithm but very time consuming and inefficient for large data sets. SGD calculates the gradient for only one randomly chosen example in each case.
+
+Adam algorithm is a advanced version of SGD algorithm using the combination of momentum method and RSMProp method. The algorithm is shown below:
+
+$$J(\boldsymbol\theta)=\frac{1}{m}\sum_{i=1}^{m}{L(\boldsymbol\theta,({x}^{i},{y}^{i}))}$$
+$$\boldsymbol s = \rho_1 \boldsymbol s + (1 - \rho_1) \boldsymbol J$$
+$$\boldsymbol r = \rho_2 \boldsymbol r + (1 - \rho_2) \boldsymbol J^T \boldsymbol J$$
+$$\hat{\boldsymbol s} = \frac{\boldsymbol s}{1 - \rho_1}$$
+$$\hat{\boldsymbol r} = \frac{\boldsymbol r}{1 - \rho_2}$$
+$$\Delta \boldsymbol J = -\epsilon \frac{\hat{\boldsymbol s}}{\sqrt{\hat{\boldsymbol r}}+\boldsymbol \delta}$$
+
+In terms of Adam algorithm\cite{kanwar2019deep}, estimations of first and second moments are both utilised. It is useful to think of a ball running down a slope. Adam behaves like a heavy ball with friction, which prefers stopping at flat minimum in the error surface \cite{kingma2014adam}.
+
+Adam algorithm has better capability to avoid stopping at local minimum with the use of momentum, and it also avoid the accumulation of second order momentum which can lead to a early stop of the training process. It is a relative universal algorithm which performs well on both dense and sparse data set. 
+
+Turning now to the second part, the loss function used here to assess the accuracy of the network is the Mean Squared Error (MSE), which can be defined as:
+
+$$MSE = \frac{1}{N} \sum_{i=1}^{N}{(f_i - y_i)^2}$$
+
+where $N$ is the number of samples in data set, $f$ the predicted target value and $y$ the real target value. Low loss value in the training process does not necessarily indicate an accurate model. An over-fitted model also produce low loss value. 

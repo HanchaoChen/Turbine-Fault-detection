@@ -1,0 +1,19 @@
+\section{Conclusion and Future Work}
+This section presents the conclusions of the study and a discussion for further research.
+
+\subsection{Conclusion}
+The aim of this project is to investigate how machine learning algorithms can be applied to offshore wind SCADA data and make decisions about the health status of turbines. And all three key objectives are achieved in the end:
+
+\begin{itemize}
+\item Three different machine learning based models for predicting wind turbines' health status are developed.
+\item The thresholds of turbine health is defined by health score.
+\item A standard workflow for health prediction and maintenance decision is built.
+\end{itemize}
+
+In the beginning, data pre-processing techniques were implemented for each SCADA variables. Based on this analysis, three machine learning models were built to predict the health condition of the turbines. The sequence of the three models represents the deepening of the understanding of SCADA data. By comparing the effectiveness of these three models, there is one additional finding that exploring the underlying relationship between variables before feed them into the model is extremely important. And that's why the last advanced multinomial classification model has the best performance.
+
+Moreover, all three models are able to process one turbine's data and make prediction in 5 minutes, and only requires very few computational resources. This property shows the potential for real-time monitoring.
+
+\subsection{Future work}
+
+As was mentioned in section 5, regression model using LSTM has good performance in predicting evolution of certain variable. This means that regression model is able to extract the underlying time-related information of SCADA data. However, the two classification models use single data point as input, therefore the time-related information is not utilised. It is deserved to explore combining LSTM with the classification model. In this way, short series of data points are used as inputs and the machine learning model's ability to extracting information will be maximized.

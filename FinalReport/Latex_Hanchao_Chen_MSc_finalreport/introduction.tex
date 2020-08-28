@@ -1,0 +1,61 @@
+\section{Introduction}
+
+\subsection{Background}
+
+The wind is a clean, free, and readily available renewable energy source. And wind turbines allow us to harness the power of the wind and turn it into electricity. With the growing demand for environment protection, wind power generation is playing an increasingly important role in recent decades. For example, wind energy had a total net installed capacity of 169 GW in Europe in 2017. And this number became 205GW in 2019. Wind energy has become one of the fastest-growing energy sources in the world.
+
+Wind farm is a cluster of many individual wind turbines and can be classified into onshore wind farm and off shore wind farm. Offshore wind energy, which is much more recent and emerged mainly due to less impact on landscape and to take advantage of the steadier and stronger offshore winds, has been price-competitive with conventional power sources in Europe since 2017. And the European Commission expects that offshore wind energy will be of increasing importance in the future \cite{Keyenergy}.
+
+With technology development, there is a tendency that companies increase the rated capacity of wind turbines as well as the distance between offshore wind farm and shore, to maximise the extracted power. However, this significantly increases the complexity of the project. And the demand for technological improvement not only with respect to the wind turbines themselves but also with their transportation, installation, grid integration and Operation and Maintenance (O\&M) is ever increasing \cite{Sofia}. Compared to installation whose cost is fixed at the beginning and can be hardly controlled by wind farm owners, O\&M is more flexible and has potential to be optimized during the whole life cycle. O\&M accounts for 25-30\% of the lifetime cost of offshore wind farms including component failures and replacement \cite{Sofia}. It is largely because of the remoteness of the farms, the non-optimal maintenance strategy and the harsh ocean environment they are exposed to. In order to stay competitive with respect to other rapid growing technologies, companies need to maximize the economic effectiveness of these offshore wind farms. Therefore, reducing the O\&M costs becomes the main goal in the offshore wind industry. Now more and more advanced maintenance strategies are being researched and implemented by wind industry to minimize O\&M costs.
+
+Basically, there are two types of maintenance strategies: reactive maintenance and preventive maintenance. Reactive maintenance is repairs that carried out after a component failure has occurred. While preventive maintenance is regularly carried out or based on certain predefined criteria to lessen the likelihood of a failure. Although no initial cost and maintenance plan required for reactive maintenance, there are several disadvantages: more cost of unexpected downtime, shorter asset life expectancy and difficulty of time management. Since reactive maintenance is a short-sighted approach, relying only on reactive maintenance is not economic effective for the long term projects. For the wind but increasingly also other industries like, mineral processing, oil \& gas - reactive maintenance is no longer a solution. This is the rationale why the wind industry pays more attention to the search on preventive maintenance. Preventive maintenance can reduce the cost and repair time but has also indirect advantages - extended lifetime and the optimization of energy production. In this context, data mining approaches which utilize the available turbine Supervisory Control and Data Acquisition (SCADA) data is being studied \cite{godwin2013classification}. SCADA systems are currently being installed in every large wind farms, and therefore utilising their data involves no additional costs. SCADA system is able to monitor operating status of components and produce alarms if there are abnormal values. However these alarms are too frequent which lead to so many false positives. Hence the SCADA system is often ignored by wind farm owners.
+
+\subsection{Project Purpose}
+The aim of this project is to investigate how machine learning algorithms can be applied to offshore wind SCADA data and make decisions about the health status of turbines. The following are key objectives of this project:
+
+\begin{itemize}
+\item Determine the health state of different components of wind turbines.
+\item Define thresholds of machine health.
+\item Build a standard workflow for health prediction and maintenance decision.
+\end{itemize}
+
+\subsection{Literature Review}
+There are four main approaches named trend analysis, clustering, normal behavior modelling and physical models, as was reported in the review by \cite{tautz2016using} with the use of SCADA data for wind turbine condition monitoring. Normal behavior modelling (NBM), which does not require detailed knowledge on the relationship between fault development and the operating parameters, gets the most attention. A NBM predicts the value of some SCADA variable (e.g. component temperature), as a function of other SCADA variables. The error is defined as the difference between the predicted values and the real values. Then a maximum value for this error is set, and error above this threshold are considered as the occurrence of turbine failure. To estimate NBM, many works have been done with the use of machine learning techniques. Here we can divide these works in two groups based on the ML approach they used: unsupervised and supervised learning \cite{shalev2014understanding}. As for supervised learning, labels are required and model is trained to learn the mapping function from the input variables to the output labels. Unsupervised learning methods do not require pre-existing labels. One important thing need to be clarified is that supervised learning methods are always required to create normal behavior models, and the labels are the values of target variable of NBM \cite{eriksson2020machine}. However, strategies where no labels indicating the turbine's operating states (e.g. normal or abnormal) are used are regarded as unsupervised methods \cite{helbing2018deep}.
+
+\begin{itemize}
+
+\item Unsupervised approaches
+
+Zaher et al \cite{zaher2009online} developed a simple ANN with one hidden layer containing 3 neurons to model gearbox temperature evolution based on three months of SCADA data. The model are able to produce alarms of gearbox faults up to six months before they were detected by traditional monitoring systems. Schlechtingen et al \cite{schlechtingen2011comparative} developed a linear regression model and an ANN to detect bearing damages and stator temperature anomalies. A five standard deviations limit for residuals is set. The result shows ANN generally performs better than linear regression model. Tautz et al compared four approaches named ANN, linear regression, SVM and RNN. The result shows that RNN produces similar result as ANN and ANN type approaches generally outperform other approaches. Wang et al \cite{wang2016wind} used auto encoder to predict blade breakage. The SCADA variables are first encoded by an ANN with two hidden layers. Then the compressed data are reconstructed and compared with initial data. Large value of reconstruction error indicates an abnormal state. They reported that all cases of blade breakage were detected at least six hours before they were detected by traditional monitoring systems.
+
+\item Supervised approaches
+
+In terms of fault supervised approaches, fault detection model is usually a binary classifier distinguishing between normal state and abnormal state. The challenge is that it's hard to get ground truth labels of SCADA data. Generally, there are fewer researches on a supervised approach. Kusiak et al directly used status codes from SCADA system as labels to carry out system health monitoring. With the use of ANN they achieved the detection of faults one hour before occurrence with an accuracy between 63\% and 78\% \cite{kusiak2011prediction}.
+
+\end{itemize}
+
+\section{Code metadata}
+\textbf{Platform}
+
+The main developing language this project is Python3. In addition, the libraries below are included. For the developing platform, the software is developed under Mac OS and Windows10. The machine learning models are run and tested on author's Macbook pro. The platform for machine learning is Jupyter Notebook, and the GPU used is one NVIDIA RTX 2070 8GB.
+
+\textbf{Libraries}
+
+The following are utilised in this work:
+\begin{enumerate}
+\item Pytorch (1.5)\cite{pyTorch}
+
+\item TensorFlow\cite{tf}
+
+\item Pandas\cite{pandas}
+
+\item Numpy\cite{numpy}
+
+\item Matplotlib\cite{matplotlib}
+
+\item scikit-learn\cite{scikit}
+\end{enumerate}
+
+\textbf{Link to codes}
+
+https://github.com/acse-2019/irp-acse-hc1119
