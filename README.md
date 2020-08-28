@@ -33,6 +33,11 @@ The project makes extensive use of txt files that contain SCADA data. You can us
 
 Trained neural networks are saved in the "Model" folder. You can load these trained model to make prediction without the training process.
 
+- model12_multiclassification.pt
+- model21_multiclassification.pt
+- model21_binaryclassification.pt
+- model21_regression
+
 
 
 **Code Folder**
